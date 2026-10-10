@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Калькулятор опыта Minecraft</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='styles.css') }}"
+    >
+</head>
+
+<body>
+
+    <main>
+
+        <h1>Калькулятор опыта Minecraft</h1>
+
+        <p>
+            Введите текущий и целевой уровень.
+        </p>
+
+        <img
+            class="cozino"
+            src="{{ url_for('static', filename='cozino.png') }}"
+            width="499"
+            height="200"
+            alt="Minecraft"
+        >
+
+        <form method="POST">
+
+            <table>
+
+                <tr>
+                    <th colspan="2">
+                        Расчёт XP
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        Текущий уровень:
+                    </td>
+
+                    <td>
+                        <input
+                            type="number"
+                            name="current_level"
+                            min="0"
+                            step="1"
+                            value="{{ current_level if current_level is not none else '' }}"
+                            required
+                        >
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Целевой уровень:
+                    </td>
+
+                    <td>
+                        <input
+                            type="number"
+                            name="target_level"
+                            min="0"
+                            step="1"
+                            value="{{ target_level if target_level is not none else '' }}"
+                            required
+                        >
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+
+                        <div class="button-container">
+
+                            <button type="submit">
+                                <span class="btnText">
+                                    Рассчитать
+                                </span>
+                            </button>
+
+                            <span class="loader"></span>
+
+                        </div>
+
+                    </td>
+                </tr>
+
+            </table>
+
+        </form>
+
+
+        {% if error %}
+
+            <p class="error">
+                {{ error }}
+            </p>
+
+
+        {% elif result is not none %}
+
+            <table class="result-table">
+
+                <tr>
+                    <th colspan="2">
+                        Результат
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        Текущий уровень
+                    </td>
+
+                    <td>
+                        <strong>
+                            {{ current_level }}
+                        </strong>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Целевой уровень
+                    </td>
+
+                    <td>
+                        <strong>
+                            {{ target_level }}
+                        </strong>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Текущий общий XP
+                    </td>
+
+                    <td>
+                        <strong>
+                            {{ current_xp }}
+                        </strong>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        XP для целевого уровня
+                    </td>
+
+                    <td>
+                        <strong>
+                            {{ target_xp }}
+                        </strong>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Нужно получить XP
+                    </td>
+
+                    <td>
+                        <strong>
+                            {{ result }}
+                        </strong>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        XP до следующего уровня
+                    </td>
+
+                    <td>
+                        <strong>
+                            {{ next_level_xp }}
+                        </strong>
+                    </td>
+                </tr>
+
+            </table>
+
+
+        {% else %}
+
+            <p>
+                Введите уровни и нажмите «Рассчитать».
+            </p>
+
+        {% endif %}
+
+    </main>
+
+
+    <script>
+
+        const form = document.querySelector("form");
+        const loader = document.querySelector(".loader");
+
+        form.addEventListener("submit", function () {
+
+            loader.style.display = "inline-block";
+
+        });
+
+    </script>
+
+</body>
+
+</html>

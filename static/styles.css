@@ -1,0 +1,275 @@
+body {
+    background-image:
+        linear-gradient(
+            rgba(245, 248, 240, 0.58),
+            rgba(245, 248, 240, 0.58)
+        ),
+        url("/static/sunshine7.jpg");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 65%;
+    background-attachment: fixed;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+
+    min-height: 100vh;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #EEF3E8;
+    color: #222222;
+}
+
+h1 {
+    color: #D94F3D;
+}
+
+table {
+    background-color: rgba(255, 255, 255, 0.92);
+    color: #263326;
+    border: 1px solid #B8C8AE;
+
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table:hover {
+    background-color: #F0F0F0;
+}
+
+.result-table {
+    border-color: #3D805F;
+}
+
+strong {
+    color: #D94343;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-image:
+            linear-gradient(
+                rgba(21, 21, 21, 0.6),
+                rgba(21, 21, 21, 0.6)
+            ),
+            url("/static/urcdcfonem7a1.png");
+
+        background-color: #151515;
+        color: navajowhite;
+    }
+
+
+    table {
+        background-color: #1E1E1E;
+        color: #E4E5EB;
+        border: 1px solid #2A2A2A;
+    }
+
+
+    table:hover {
+        background-color: #1C1C1C;
+    }
+
+
+    h1 {
+        color: tomato;
+    }
+
+
+    .cozino {
+        animation: rotate 1s infinite;
+    }
+
+
+    .result-table {
+        border-color: #4E9A75;
+    }
+
+
+    strong {
+        color: #FF6B6B;
+    }
+
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+    }
+
+
+    button {
+        background-color: #2d2d2d;
+        color: #ffffff;
+
+        border: none;
+        padding: 10px 18px;
+
+        outline: 2px solid transparent;
+        cursor: pointer;
+
+        transition:
+            transform 0.2s,
+            opacity 0.2s,
+            background-color 0.2s;
+
+        animation: colorShift 4s infinite;
+    }
+
+
+    button:hover {
+        animation:
+            colorShift 4s infinite,
+            button-pulse 1s infinite;
+    }
+
+
+    button:focus {
+        outline: 2px solid #ffffff;
+    }
+
+
+    button:active {
+        transform: scale(0.95);
+        background-color: #000000;
+    }
+
+
+    .loader {
+        --color-1: #fff;
+        --color-2: #ff3d00;
+        --size: 0.5px;
+
+        width: calc(48 * var(--size));
+        height: calc(48 * var(--size));
+
+        border:
+            calc(3 * var(--size))
+            solid
+            var(--color-1);
+
+        border-radius: 50%;
+
+        display: none;
+
+        position: relative;
+        box-sizing: border-box;
+
+        animation:
+            rotation 1s linear infinite;
+    }
+
+
+    .loader::after {
+        content: '';
+
+        box-sizing: border-box;
+
+        position: absolute;
+
+        left: 50%;
+        top: 50%;
+
+        transform:
+            translate(-50%, -50%);
+
+        width: calc(56 * var(--size));
+        height: calc(56 * var(--size));
+
+        border-radius: 50%;
+
+        border:
+            calc(3 * var(--size))
+            solid;
+
+        border-color:
+            var(--color-2)
+            transparent;
+    }
+
+
+    @keyframes rotation {
+
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+
+    @keyframes colorShift {
+
+        0% {
+            background: #3b82f6;
+        }
+
+        25% {
+            background: #8b5cf6;
+        }
+
+        50% {
+            background: #ec4899;
+        }
+
+        75% {
+            background: #f59e0b;
+        }
+
+        100% {
+            background: #3b82f6;
+        }
+    }
+
+
+    @keyframes button-pulse {
+
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.05);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+
+    @keyframes rotate {
+
+        0% {
+            transform:
+                scale(1)
+                rotate(0deg);
+
+            opacity: 1;
+        }
+
+        50% {
+            transform:
+                scale(1.2);
+
+            opacity: 0.7;
+        }
+
+        100% {
+            transform:
+                scale(1)
+                rotate(360deg);
+
+            opacity: 1;
+        }
+    }
+}
